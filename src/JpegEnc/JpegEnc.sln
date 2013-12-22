@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JpegEnc", "JpegEnc.vcxproj", "{CEAB8480-A716-4462-818A-BD549D7CE540}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugTest|Win32 = DebugTest|Win32
+		Release|Win32 = Release|Win32
+		ReleaseTest|Win32 = ReleaseTest|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.Debug|Win32.Build.0 = Debug|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.DebugTest|Win32.ActiveCfg = DebugTest|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.DebugTest|Win32.Build.0 = DebugTest|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.Release|Win32.ActiveCfg = Release|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.Release|Win32.Build.0 = Release|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.ReleaseTest|Win32.ActiveCfg = Debug|Win32
+		{CEAB8480-A716-4462-818A-BD549D7CE540}.ReleaseTest|Win32.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
