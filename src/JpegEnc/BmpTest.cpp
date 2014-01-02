@@ -4,7 +4,6 @@
 #include <vector>
 #include <cstdint>
 
-//#define BOOST_TEST_MODULE BitmapTest
 #include <boost/test/unit_test.hpp>
 
 // Normal 24bpp 3x3 pixel BMP image.
