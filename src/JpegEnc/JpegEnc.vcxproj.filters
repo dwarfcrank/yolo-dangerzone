@@ -30,6 +30,9 @@
     <ClInclude Include="colorutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +54,12 @@
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="TestMain.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
