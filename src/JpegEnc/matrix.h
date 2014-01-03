@@ -30,4 +30,24 @@ void MatrixMultiply(TDestMatrix* Result, const TSrcMatrix1& MatrixA, const TSrcM
     }
 }
 
+/**
+Computes the transpose of a matrix which will replace the matrix passed to the function.
+The matrix must be a type based on std::array with 64 elements.
+
+@param[in,out]  Matrix  The matrix to transpose.
+*/
+template<typename TMatrix>
+void MatrixTranspose(TMatrix* Matrix)
+{
+    TMatrix transpose;
+
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            transpose[x * 8 + y] = Matrix->at(y * 8 + x);
+        }
+    }
+
+    Matrix->swap(transpose);
+}
+
 }
