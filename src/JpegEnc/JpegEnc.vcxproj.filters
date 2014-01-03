@@ -33,6 +33,12 @@
     <ClInclude Include="block.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fdct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +66,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BlockTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="fdct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
