@@ -5,7 +5,7 @@
 #include <cstdint>
 
 /**
-A 8x8 block of 8-bit integers.
+A 8x8 block of 8-bit unsigned integers.
 */
 typedef std::array<std::uint8_t, 64> Uint8Block;
 
@@ -13,7 +13,7 @@ typedef std::array<std::uint8_t, 64> Uint8Block;
 A 8x8 block of 16-bit integers. Used as the result type of the forward DCT
 on an 8-bit block.
 */
-typedef std::array<std::uint16_t, 64> Uint16Block;
+typedef std::array<std::int16_t, 64> Int16Block;
 
 namespace Util
 {
