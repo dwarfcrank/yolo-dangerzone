@@ -12,7 +12,7 @@ Performs quantization on a block of luminance data.
                         Higher values result in less compression and better quality.
 @param[in,out]  Block   The block to be quantized.
 */
-void QuantizeLumaBlock(int Quality, Uint8Block* Block);
+void QuantizeLumaBlock(int Quality, Int16Block* Block);
 
 /**
 Performs quantization on a block of chrominance data.
@@ -21,6 +21,6 @@ Performs quantization on a block of chrominance data.
                         Higher values result in less compression and better quality.
 @param[in,out]  Block   The block to be quantized.
 */
-void QuantizeChromaBlock(int Quality, Uint8Block* Block);
+void QuantizeChromaBlock(int Quality, Int16Block* Block);
 
 }

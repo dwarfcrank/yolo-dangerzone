@@ -54,10 +54,10 @@ Quantizes a block using the supplied table and quality level.
 @param[in]      QuantizationTable The table used for quantization.
 @param[in,out]  Block   The block to quantize.
 */
-static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Uint8Block* Block)
+static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Int16Block* Block)
 {
     const float qualityFactor = CalculateQualityFactor(Quality);
-    Uint8Block& block = *Block;
+    Int16Block& block = *Block;
 
     for (int i = 0; i < 64; i++) {
         const float quantized = static_cast<float>(block[i]) / (QuantizationTable[i] * qualityFactor);
@@ -68,12 +68,12 @@ static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Uint
 namespace Jpeg
 {
 
-void QuantizeLumaBlock(int Quality, Uint8Block* Block)
+void QuantizeLumaBlock(int Quality, Int16Block* Block)
 {
     QuantizeBlock(Quality, LuminanceTable, Block);
 }
 
-void QuantizeChromaBlock(int Quality, Uint8Block* Block)
+void QuantizeChromaBlock(int Quality, Int16Block* Block)
 {
     QuantizeBlock(Quality, ChrominanceTable, Block);
 }
