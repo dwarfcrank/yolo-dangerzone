@@ -159,6 +159,7 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bitvector.h" />
     <ClInclude Include="block.h" />
     <ClInclude Include="bmp.h" />
     <ClInclude Include="colorutil.h" />
@@ -169,6 +170,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bitvector.cpp" />
+    <ClCompile Include="BitVectorTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="block.cpp" />
     <ClCompile Include="BlockTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

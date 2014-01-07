@@ -42,6 +42,9 @@
     <ClInclude Include="quantization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bitvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -79,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="quantization.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitvector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BitVectorTest.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
