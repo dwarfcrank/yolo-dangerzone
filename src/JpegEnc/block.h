@@ -30,3 +30,16 @@ edge pixels on edge blocks will be repeated.
 void SplitBlocks(const std::vector<uint8_t>& Pixels, int Width, int Height, std::vector<Uint8Block>* Result);
 
 }
+
+namespace Jpeg
+{
+
+/**
+Reorders the elements of a block according to the zigzag pattern specified
+in the JPEG specification.
+
+@param[in]  Block   The block to reorder.
+*/
+void ReorderBlock(const Int16Block& Block, Int16Block* Result);
+
+}
