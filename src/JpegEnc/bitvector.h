@@ -38,13 +38,13 @@ public:
 
     @return A read-only reference to the storage object.
     */
-    const std::vector<std::uint32_t>& GetStorage() const
+    const std::vector<std::uint8_t>& GetStorage() const
     {
         return m_Storage;
     }
 
 private:
-    std::vector<std::uint32_t> m_Storage;
+    std::vector<std::uint8_t> m_Storage;
     int m_BitPosition;
 };
 

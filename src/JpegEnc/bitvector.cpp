@@ -5,7 +5,7 @@ namespace Util
 {
 
 BitVector::BitVector(void) :
-    m_BitPosition(31), m_Storage(1)
+    m_BitPosition(7), m_Storage(1)
 {
 }
 
@@ -20,7 +20,7 @@ void BitVector::WriteBit(std::uint32_t Bit)
 
     if (m_BitPosition < 0) {
         m_Storage.push_back(0);
-        m_BitPosition = 31;
+        m_BitPosition = 7;
     }
 
     m_Storage.back() |= (Bit << m_BitPosition);

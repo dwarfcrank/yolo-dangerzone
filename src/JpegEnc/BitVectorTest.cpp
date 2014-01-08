@@ -6,21 +6,21 @@
 
 #include <boost/test/unit_test.hpp>
 
-static void Check(const Util::BitVector& BitVector, const std::uint32_t* Expected, std::size_t NumExpected)
+static void Check(const Util::BitVector& BitVector, const std::uint8_t* Expected, std::size_t NumExpected)
 {
-    const std::vector<std::uint32_t>& storage = BitVector.GetStorage();
+    const std::vector<std::uint8_t>& storage = BitVector.GetStorage();
 
     BOOST_CHECK_EQUAL_COLLECTIONS(storage.cbegin(), storage.cend(),
         Expected, Expected + NumExpected);
 }
 
 #define ARRAYSIZE(arr) (sizeof(arr) / sizeof(arr[0]))
-#define CHECK(bitvector, expected) Check((bitvector), (expected), ARRAYSIZE((expected)))
+#define CHECK(bitvector, expected) Check((bitvector), (expected), sizeof((expected)))
 
 BOOST_AUTO_TEST_CASE(WriteSingle)
 {
     Util::BitVector bv;
-    std::uint32_t expected[] = { 0x80000000 }; // 32-bit uint with MSB set
+    std::uint8_t expected[] = { 0x80 }; // 8-bit uint with MSB set
 
     bv.WriteBit(1);
     CHECK(bv, expected);
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(WriteSingle)
 BOOST_AUTO_TEST_CASE(WriteMultiple)
 {
     Util::BitVector bv;
-    std::uint32_t expected[] = { 0xFFFFFFFF }; // 32-bit uint with all ones
+    std::uint8_t expected[] = { 0xFF, 0xFF, 0xFF, 0xFF }; // 8-bit uints with all ones
 
     bv.WriteBits(0xFFFFFFFF, 32);
     CHECK(bv, expected);
@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(WriteMultiple)
 BOOST_AUTO_TEST_CASE(WriteMultipleSplit)
 {
     Util::BitVector bv;
-    std::uint32_t expected[] = { 0xFFFFFF00, 0x00FFFF00 }; // 32-bit uint with all ones
+    std::uint8_t expected[] = { 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00 };
 
     bv.WriteBits(0xFFFFFF, 24);
     bv.WriteBits(0, 16);
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE(WriteMultipleSplit)
 BOOST_AUTO_TEST_CASE(WritePattern)
 {
     Util::BitVector bv;
-    std::uint32_t expected[] = { 0xAAAAAAAA, 0x55555555 }; // 32-bit uint consisting of 101010..., then 010101...
+    std::uint8_t expected[] = { 0xAA, 0xAA, 0xAA, 0xAA, 0x55, 0x55, 0x55, 0x55 };
 
     for (int i = 0; i < 32; i += 2) {
         bv.WriteBit(1);
