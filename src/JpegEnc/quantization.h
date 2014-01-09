@@ -12,7 +12,7 @@ Performs quantization on a block of luminance data.
                         Higher values result in less compression and better quality.
 @param[in,out]  Block   The block to be quantized.
 */
-void QuantizeLumaBlock(int Quality, Int16Block* Block);
+void QuantizeLuminanceBlock(int Quality, Int16Block* Block);
 
 /**
 Performs quantization on a block of chrominance data.
@@ -21,21 +21,21 @@ Performs quantization on a block of chrominance data.
                         Higher values result in less compression and better quality.
 @param[in,out]  Block   The block to be quantized.
 */
-void QuantizeChromaBlock(int Quality, Int16Block* Block);
+void QuantizeChrominanceBlock(int Quality, Int16Block* Block);
 
 /**
 Gets the chrominance quantization matrix.
 
 @return A const reference to the chrominance quantization matrix.
 */
-const Uint8Block& GetChromaQuantizationMatrix();
+const Uint8Block& GetChrominanceQuantizationMatrix();
 
 /**
 Gets the luminance quantization matrix.
 
 @return A const reference to the luminance quantization matrix.
 */
-const Uint8Block& GetLumaQuantizationMatrix();
+const Uint8Block& GetLuminanceQuantizationMatrix();
 
 /**
 Calculates the quantum multiplier for the desired quality level.

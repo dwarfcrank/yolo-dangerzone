@@ -69,22 +69,22 @@ float CalculateQualityFactor(int Quality)
     return 1.0f;
 }
 
-void QuantizeLumaBlock(int Quality, Int16Block* Block)
+void QuantizeLuminanceBlock(int Quality, Int16Block* Block)
 {
     QuantizeBlock(Quality, LuminanceTable, Block);
 }
 
-void QuantizeChromaBlock(int Quality, Int16Block* Block)
+void QuantizeChrominanceBlock(int Quality, Int16Block* Block)
 {
     QuantizeBlock(Quality, ChrominanceTable, Block);
 }
 
-const Uint8Block& GetChromaQuantizationMatrix()
+const Uint8Block& GetChrominanceQuantizationMatrix()
 {
     return ChrominanceTable;
 }
 
-const Uint8Block& GetLumaQuantizationMatrix()
+const Uint8Block& GetLuminanceQuantizationMatrix()
 {
     return LuminanceTable;
 }
