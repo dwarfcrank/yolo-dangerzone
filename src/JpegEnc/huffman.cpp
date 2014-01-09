@@ -41,44 +41,51 @@ static std::size_t GetConsecutiveZeroCount(const Int16Block& Block, std::size_t 
 namespace Jpeg
 {
 
-HuffmanEncoder::HuffmanEncoder(void) :
-    m_PrevDCCoefficient(0)
+HuffmanEncoder::HuffmanEncoder(void)
 {
     GenerateLuminanceTables();
     GenerateChrominanceTables();
+
+    for (int i = 0; i < 3; i++) {
+        m_PrevDCCoefficient[i] = 0;
+    }
 }
 
 HuffmanEncoder::~HuffmanEncoder(void)
 {
 }
 
-void HuffmanEncoder::EncodeChrominanceBlock(const Int16Block& Block, Util::BitVector* Result)
+void HuffmanEncoder::EncodeBlock(const Int16Block& Block, ImageComponent Component, Util::BitVector* Result)
 {
-    EncodeBlock(Block, m_ChrominanceDCTable, m_ChrominanceACTable, Result);
-}
-
-void HuffmanEncoder::EncodeLuminanceBlock(const Int16Block& Block, Util::BitVector* Result)
-{
-    EncodeBlock(Block, m_LuminanceDCTable, m_LuminanceACTable, Result);
+    if (Component == COMPONENT_Y) {
+        EncodeBlock(Block, m_LuminanceDCTable, m_LuminanceACTable, Component, Result);
+    } else {
+        EncodeBlock(Block, m_ChrominanceDCTable, m_ChrominanceACTable, Component, Result);
+    }
 }
 
 void HuffmanEncoder::EncodeBlock(const Int16Block& Block, const HuffmanTable& DCTable,
-                                 const HuffmanTable& ACTable, Util::BitVector* Result)
+                                 const HuffmanTable& ACTable, ImageComponent Component, Util::BitVector* Result)
 {
-    EncodeDCCoefficient(Block, DCTable, Result);
+    EncodeDCCoefficient(Block, DCTable, Component, Result);
     EncodeACCoefficients(Block, ACTable, Result);
 }
 
 void HuffmanEncoder::EncodeDCCoefficient(const Int16Block& Block, const HuffmanTable& DCTable,
-                                         Util::BitVector* Result)
+                                         ImageComponent Component, Util::BitVector* Result)
 {
-    std::int16_t difference = Block[0] - m_PrevDCCoefficient;
-    m_PrevDCCoefficient = Block[0];
+    std::int16_t difference = Block[0] - m_PrevDCCoefficient[Component];
+    m_PrevDCCoefficient[Component] = Block[0];
 
     std::uint16_t length = GetLength(difference);
     const HuffmanCode& code = DCTable.Codes[length];
 
     Result->WriteBits(code.Code, code.Length);
+
+    if (difference < 0) {
+        difference -= 1;
+    }
+
     Result->WriteBits(difference, length);
 }
 
@@ -109,6 +116,16 @@ void HuffmanEncoder::EncodeACCoefficients(const Int16Block& Block, const Huffman
 
         const HuffmanCode& code = ACTable.Codes[huffmanValue];
         Result->WriteBits(code.Code, code.Length);
+
+        std::int16_t value = 0;
+
+        if (Block[i] < 0) {
+            value = Block[i] - 1;
+        } else {
+            value = Block[i];
+        }
+
+        Result->WriteBits(value, length);
     }
 }
 

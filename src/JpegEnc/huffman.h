@@ -43,6 +43,14 @@ struct HuffmanTable
     std::uint8_t Values[256];
 };
 
+enum ImageComponent
+{
+    COMPONENT_Y = 0,
+    COMPONENT_CR,
+    COMPONENT_CB,
+    NUM_COMPONENTS,
+};
+
 /**
 A class for Huffman coding image blocks.
 The Huffman coding process has some state associated with it, so
@@ -55,20 +63,33 @@ public:
     ~HuffmanEncoder(void);
 
     /**
-    Encodes a single luminance channel block.
+    Encodes a single block.
 
-    @param[in]  Block   The block to encode.
-    @param[out] Result  The bit vector to encode the block into.
+    @param[in]  Block       The block to encode.
+    @param[in]  Component   The component to encode.
+    @param[out] Result      The bit vector to encode the block into.
     */
-    void EncodeLuminanceBlock(const Int16Block& Block, Util::BitVector* Result);
+    void EncodeBlock(const Int16Block& Block, ImageComponent Component, Util::BitVector* Result);
 
-    /**
-    Encodes a single chrominance channel block.
+    const HuffmanTable& GetLuminanceDCTable()
+    {
+        return m_LuminanceDCTable;
+    }
 
-    @param[in]  Block   The block to encode.
-    @param[out] Result  The bit vector to encode the block into.
-    */
-    void EncodeChrominanceBlock(const Int16Block& Block, Util::BitVector* Result);
+    const HuffmanTable& GetLuminanceACTable()
+    {
+        return m_LuminanceACTable;
+    }
+
+    const HuffmanTable& GetChrominanceDCTable()
+    {
+        return m_ChrominanceDCTable;
+    }
+
+    const HuffmanTable& GetChrominanceACTable()
+    {
+        return m_ChrominanceACTable;
+    }
 
 private:
     /**
@@ -76,7 +97,7 @@ private:
     is coded rather than the coefficients themselves, so the last coded
     DC coefficient needs to be tracked.
     */
-    std::int16_t m_PrevDCCoefficient;
+    std::int16_t m_PrevDCCoefficient[NUM_COMPONENTS];
 
     /**
     The Huffman codes used to encode DC coefficients.
@@ -111,10 +132,10 @@ private:
     @param[out] Result  The bit vector to write the encoded block into.
     */
     void EncodeBlock(const Int16Block& Block, const HuffmanTable& DCTable,
-                     const HuffmanTable& ACTable, Util::BitVector* Result);
+                     const HuffmanTable& ACTable, ImageComponent Component, Util::BitVector* Result);
 
     void EncodeDCCoefficient(const Int16Block& Block, const HuffmanTable& DCTable,
-                             Util::BitVector* Result);
+                             ImageComponent Component, Util::BitVector* Result);
 
     void EncodeACCoefficients(const Int16Block& Block, const HuffmanTable& ACTable,
                               Util::BitVector* Result);
