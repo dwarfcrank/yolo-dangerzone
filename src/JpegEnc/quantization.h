@@ -23,4 +23,7 @@ Performs quantization on a block of chrominance data.
 */
 void QuantizeChromaBlock(int Quality, Int16Block* Block);
 
+const Uint8Block& GetChromaQuantizationMatrix();
+const Uint8Block& GetLumaQuantizationMatrix();
+
 }

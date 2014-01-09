@@ -61,7 +61,7 @@ static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Int1
 
     for (int i = 0; i < 64; i++) {
         const float quantized = static_cast<float>(block[i]) / (QuantizationTable[i] * qualityFactor);
-        block[i] = static_cast<std::uint8_t>(quantized);
+        block[i] = static_cast<std::int16_t>(quantized);
     }
 }
 
@@ -76,6 +76,16 @@ void QuantizeLumaBlock(int Quality, Int16Block* Block)
 void QuantizeChromaBlock(int Quality, Int16Block* Block)
 {
     QuantizeBlock(Quality, ChrominanceTable, Block);
+}
+
+const Uint8Block& GetChromaQuantizationMatrix()
+{
+    return ChrominanceTable;
+}
+
+const Uint8Block& GetLumaQuantizationMatrix()
+{
+    return LuminanceTable;
 }
 
 }
