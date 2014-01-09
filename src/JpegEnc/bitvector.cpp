@@ -5,7 +5,7 @@ namespace Util
 {
 
 BitVector::BitVector(void) :
-    m_BitPosition(7), m_Storage(1)
+    m_BitPosition(7), m_Storage(1), m_Size(0)
 {
 }
 
@@ -26,6 +26,7 @@ void BitVector::WriteBit(std::uint32_t Bit)
     m_Storage.back() |= (Bit << m_BitPosition);
 
     m_BitPosition--;
+    m_Size++;
 }
 
 void BitVector::WriteBits(std::uint32_t Bits, int NumBits)
@@ -35,6 +36,14 @@ void BitVector::WriteBits(std::uint32_t Bits, int NumBits)
     for (int i = NumBits - 1; i >= 0; i--) {
         WriteBit((Bits >> i) & 1);
     }
+}
+
+void BitVector::Clear()
+{
+    m_Storage.clear();
+    m_Storage.push_back(0);
+    m_BitPosition = 7;
+    m_Size = 0;
 }
 
 }

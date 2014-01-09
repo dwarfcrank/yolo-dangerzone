@@ -32,6 +32,8 @@ BOOST_AUTO_TEST_CASE(WriteMultiple)
     std::uint8_t expected[] = { 0xFF, 0xFF, 0xFF, 0xFF }; // 8-bit uints with all ones
 
     bv.WriteBits(0xFFFFFFFF, 32);
+
+    BOOST_CHECK_EQUAL(bv.GetSize(), 32);
     CHECK(bv, expected);
 }
 
@@ -45,6 +47,7 @@ BOOST_AUTO_TEST_CASE(WriteMultipleSplit)
     bv.WriteBits(0xFFFF, 16);
     bv.WriteBits(0, 8);
 
+    BOOST_CHECK_EQUAL(bv.GetSize(), 64);
     CHECK(bv, expected);
 }
 
@@ -63,5 +66,17 @@ BOOST_AUTO_TEST_CASE(WritePattern)
         bv.WriteBit(1);
     }
 
+    BOOST_CHECK_EQUAL(bv.GetSize(), 64);
     CHECK(bv, expected);
+}
+
+BOOST_AUTO_TEST_CASE(Clear)
+{
+    Util::BitVector bv;
+
+    bv.WriteBits(0xFF, 8);
+    BOOST_CHECK_EQUAL(bv.GetSize(), 8);
+
+    bv.Clear();
+    BOOST_CHECK_EQUAL(bv.GetSize(), 0);
 }

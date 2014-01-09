@@ -43,9 +43,25 @@ public:
         return m_Storage;
     }
 
+    /**
+    Clears the bit vector.
+    */
+    void Clear();
+
+    /**
+    Gets the number of bits stored in this bit vector.
+
+    @return Number of bits stored in the vector.
+    */
+    size_t GetSize() const
+    {
+        return m_Size;
+    }
+
 private:
     std::vector<std::uint8_t> m_Storage;
     int m_BitPosition;
+    size_t m_Size;
 };
 
 }
