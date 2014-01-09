@@ -104,8 +104,8 @@ void SplitBlocks(const std::vector<uint8_t>& Pixels, int Width, int Height, std:
             int blockHeight = std::min(8, Height - y * 8);
 
             Uint8Block* block = &Result->at(blockIndex);
-            const std::uint8_t* buffer = Pixels.data() + (y * 8 * Height + x * 8);
-            
+            const std::uint8_t* buffer = Pixels.data() + (y * 8 * Width + x * 8);
+
             ExtractBlock(buffer, Width, rowCount, blockWidth, blockHeight, block);
         }
     }
@@ -134,7 +134,7 @@ void ReorderBlock(const Int16Block& Block, Int16Block* Result)
 
     for (int i = 0; i < 64; i++) {
         int index = ZigzagIndices[i];
-        result[i] = Block[index];
+        result[index] = Block[i];
     }
 }
 
