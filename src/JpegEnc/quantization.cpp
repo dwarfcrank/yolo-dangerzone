@@ -33,18 +33,6 @@ static const Uint8Block ChrominanceTable =
     99, 99, 99, 99, 99, 99, 99, 99,
 };
 
-static float CalculateQualityFactor(int Quality)
-{
-    if (Quality < 50) {
-        return 50.0f / static_cast<float>(Quality);       
-    }
-
-    if (Quality > 50) {
-        return static_cast<float>(100 - Quality) / 50.0f;
-    }
-
-    return 1.0f;
-}
 
 /**
 Quantizes a block using the supplied table and quality level.
@@ -56,7 +44,7 @@ Quantizes a block using the supplied table and quality level.
 */
 static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Int16Block* Block)
 {
-    const float qualityFactor = CalculateQualityFactor(Quality);
+    const float qualityFactor = Jpeg::CalculateQualityFactor(Quality);
     Int16Block& block = *Block;
 
     for (int i = 0; i < 64; i++) {
@@ -67,6 +55,19 @@ static void QuantizeBlock(int Quality, const Uint8Block& QuantizationTable, Int1
 
 namespace Jpeg
 {
+
+float CalculateQualityFactor(int Quality)
+{
+    if (Quality < 50) {
+        return 50.0f / static_cast<float>(Quality);       
+    }
+
+    if (Quality > 50) {
+        return static_cast<float>(100 - Quality) / 50.0f;
+    }
+
+    return 1.0f;
+}
 
 void QuantizeLumaBlock(int Quality, Int16Block* Block)
 {

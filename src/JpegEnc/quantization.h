@@ -26,4 +26,12 @@ void QuantizeChromaBlock(int Quality, Int16Block* Block);
 const Uint8Block& GetChromaQuantizationMatrix();
 const Uint8Block& GetLumaQuantizationMatrix();
 
+/**
+Calculates the quantum multiplier for the desired quality level.
+
+@param[in]  Quality The desired quality level in the range [1, 100].
+@return     The quantum multiplier.
+*/
+float CalculateQualityFactor(int Quality);
+
 }
