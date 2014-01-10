@@ -53,7 +53,7 @@ public:
 
     @return Number of bits stored in the vector.
     */
-    size_t GetSize() const
+    std::size_t GetSize() const
     {
         return m_Size;
     }
@@ -61,7 +61,7 @@ public:
 private:
     std::vector<std::uint8_t> m_Storage;
     int m_BitPosition;
-    size_t m_Size;
+    std::size_t m_Size;
 };
 
 }
