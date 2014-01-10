@@ -27,7 +27,7 @@ void WriteEndOfImage(std::ostream& Stream);
 
 void WriteHuffmanTable(std::ostream& Stream, const HuffmanTable& Table, TableClass Type, int Index);
 
-void WriteQuantizationTable(std::ostream& Stream, const Uint8Block& Table, QuantizationTableType Type);
+void WriteQuantizationTable(std::ostream& Stream, const Uint8Block& Table, QuantizationTableType Type, int Quality);
 
 void WriteFrameHeader(std::ostream& Stream, std::uint16_t Width, std::uint16_t Height);
 

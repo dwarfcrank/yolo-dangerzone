@@ -2,6 +2,7 @@
 #include "jpegfile.h"
 #include "huffman.h"
 #include "bitvector.h"
+#include "quantization.h"
 
 #include <iostream>
 #include <cstdint>
@@ -106,13 +107,16 @@ void WriteHuffmanTable(std::ostream& Stream, const HuffmanTable& Table, TableCla
     }
 }
 
-void WriteQuantizationTable(std::ostream& Stream, const Uint8Block& Table, QuantizationTableType Type)
+void WriteQuantizationTable(std::ostream& Stream, const Uint8Block& Table, QuantizationTableType Type, int Quality)
 {
     WriteMarker(0xDB, Stream);
 
+    const float factor = Jpeg::CalculateQualityFactor(Quality);
+
     Uint8Block reorderedTable;
     for (int i = 0; i < 64; i++) {
-        reorderedTable[i] = Table[JpegNaturalOrder[i]];
+        reorderedTable[i] =
+            static_cast<std::uint8_t>(static_cast<float>(Table[JpegNaturalOrder[i]]) * factor);
     }
 
     // Write the size of the quantization table and its parameters.
