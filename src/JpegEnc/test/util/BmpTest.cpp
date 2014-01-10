@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "bmp.h"
+#include "util/bmp.h"
 
 #include <boost/test/unit_test.hpp>
 

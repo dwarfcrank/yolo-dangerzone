@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "colorutil.h"
+#include "util/colorutil.h"
 
 #include <boost/test/unit_test.hpp>
 
