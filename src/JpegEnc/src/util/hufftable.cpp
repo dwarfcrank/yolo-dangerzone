@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "huffman.h"
+#include "jpeg/huffman.h"
 
 /**
 These tables are precomputed from various images and are taken directly

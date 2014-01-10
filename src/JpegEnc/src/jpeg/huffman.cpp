@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "bitvector.h"
-#include "huffman.h"
+#include "util/bitvector.h"
+#include "jpeg/huffman.h"
 
 #include <cmath>
 

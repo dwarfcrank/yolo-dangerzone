@@ -1,19 +1,18 @@
 #include "stdafx.h"
-#include "bmp.h"
+#include "util/bmp.h"
 #include <vector>
 #include <cstdint>
 #include <array>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "block.h"
-#include "fdct.h"
-#include "bitvector.h"
-#include "huffman.h"
-#include "bmp.h"
-#include "colorutil.h"
-#include "jpegfile.h"
-#include "quantization.h"
+#include "util/block.h"
+#include "jpeg/fdct.h"
+#include "util/bitvector.h"
+#include "jpeg/huffman.h"
+#include "util/colorutil.h"
+#include "jpeg/jpegfile.h"
+#include "jpeg/quantization.h"
 #include <cstdio>
 
 int main(int argc, char* argv[])

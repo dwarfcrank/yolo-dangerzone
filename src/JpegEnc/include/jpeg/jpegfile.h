@@ -1,7 +1,7 @@
 #pragma once
 
-#include "block.h"
-#include "huffman.h"
+#include "jpeg/huffman.h"
+#include "util/block.h"
 
 #include <iostream>
 

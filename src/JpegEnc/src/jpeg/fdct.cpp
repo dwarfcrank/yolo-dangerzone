@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "fdct.h"
-#include "matrix.h"
+#include "jpeg/fdct.h"
+#include "util/matrix.h"
 
 #include <cmath>
 

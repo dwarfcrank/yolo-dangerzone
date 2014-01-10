@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "block.h"
-#include "matrix.h"
+#include "util/block.h"
+#include "util/matrix.h"
 
 #include <boost/test/unit_test.hpp>
 

@@ -68,20 +68,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugTest|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(BOOST_DIR);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(BOOST_DIR)\stage\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <IncludePath>$(BOOST_DIR);$(ProjectDir)include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(BOOST_DIR)\stage\lib;$(ProjectDir)include;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
     <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <IncludePath>$(ProjectDir)include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(BOOST_DIR);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(BOOST_DIR);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(BOOST_DIR)\stage\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -159,61 +160,55 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bitvector.h" />
-    <ClInclude Include="block.h" />
-    <ClInclude Include="bmp.h" />
-    <ClInclude Include="colorutil.h" />
-    <ClInclude Include="fdct.h" />
-    <ClInclude Include="huffman.h" />
-    <ClInclude Include="jpegfile.h" />
-    <ClInclude Include="matrix.h" />
-    <ClInclude Include="quantization.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="include\jpeg\fdct.h" />
+    <ClInclude Include="include\jpeg\huffman.h" />
+    <ClInclude Include="include\jpeg\jpegfile.h" />
+    <ClInclude Include="include\jpeg\quantization.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\util\bitvector.h" />
+    <ClInclude Include="include\util\block.h" />
+    <ClInclude Include="include\util\bmp.h" />
+    <ClInclude Include="include\util\colorutil.h" />
+    <ClInclude Include="include\util\matrix.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bitvector.cpp" />
-    <ClCompile Include="BitVectorTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="block.cpp" />
-    <ClCompile Include="BlockTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="bmp.cpp" />
-    <ClCompile Include="colorutil.cpp" />
-    <ClCompile Include="ColorUtilTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="fdct.cpp" />
-    <ClCompile Include="huffman.cpp" />
-    <ClCompile Include="hufftable.cpp" />
-    <ClCompile Include="jpegfile.cpp" />
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\jpeg\fdct.cpp" />
+    <ClCompile Include="src\jpeg\huffman.cpp" />
+    <ClCompile Include="src\jpeg\jpegfile.cpp" />
+    <ClCompile Include="src\jpeg\quantization.cpp" />
+    <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugTest|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="MatrixTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="quantization.cpp" />
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugTest|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="BmpTest.cpp">
+    <ClCompile Include="test\BmpTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="TestMain.cpp">
+    <ClCompile Include="test\TestMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\util\BitVectorTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\util\BlockTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\util\ColorUtilTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\util\MatrixTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\util\bitvector.cpp" />
+    <ClCompile Include="src\util\block.cpp" />
+    <ClCompile Include="src\util\bmp.cpp" />
+    <ClCompile Include="src\util\colorutil.cpp" />
+    <ClCompile Include="src\util\hufftable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

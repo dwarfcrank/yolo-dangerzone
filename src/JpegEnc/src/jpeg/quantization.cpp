@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "quantization.h"
+#include "jpeg/quantization.h"
 
 /**
 The table used for quantizing luminance data.

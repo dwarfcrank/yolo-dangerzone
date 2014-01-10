@@ -15,37 +15,38 @@
     </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{0ed4fce7-a730-4526-bca0-a1fcb61dc17c}</UniqueIdentifier>
+      <Extensions>*Test.cpp</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bmp.h">
+    <ClInclude Include="util\bitvector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="colorutil.h">
+    <ClInclude Include="util\block.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="block.h">
+    <ClInclude Include="util\bmp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fdct.h">
+    <ClInclude Include="util\colorutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matrix.h">
+    <ClInclude Include="util\matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="quantization.h">
+    <ClInclude Include="jpeg\fdct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bitvector.h">
+    <ClInclude Include="jpeg\huffman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="huffman.h">
+    <ClInclude Include="jpeg\jpegfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="jpegfile.h">
+    <ClInclude Include="jpeg\quantization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,50 +57,50 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bmp.cpp">
+    <ClCompile Include="util\bitvector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BmpTest.cpp">
+    <ClCompile Include="util\block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\bmp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\colorutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\hufftable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jpeg\fdct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jpeg\huffman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jpeg\jpegfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jpeg\quantization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\util\BitVectorTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="colorutil.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorUtilTest.cpp">
+    <ClCompile Include="test\util\BlockTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="TestMain.cpp">
+    <ClCompile Include="test\BmpTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="block.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BlockTest.cpp">
+    <ClCompile Include="test\util\ColorUtilTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="fdct.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixTest.cpp">
+    <ClCompile Include="test\util\MatrixTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="quantization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bitvector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BitVectorTest.cpp">
+    <ClCompile Include="test\TestMain.cpp">
       <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="huffman.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="hufftable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="jpegfile.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "bitvector.h"
-#include "huffman.h"
-#include "jpegfile.h"
-#include "quantization.h"
+#include "jpeg/huffman.h"
+#include "jpeg/jpegfile.h"
+#include "jpeg/quantization.h"
+#include "util/bitvector.h"
 
 #include <cstdint>
 #include <iostream>

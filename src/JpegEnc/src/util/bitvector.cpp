@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "bitvector.h"
+#include "util/bitvector.h"
 
 namespace Util
 {
