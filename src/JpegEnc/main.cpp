@@ -35,9 +35,10 @@ int main(int argc, char* argv[])
     std::vector<Uint8Block> crBlocks;
 
     Jpeg::WriteStartOfImage(s);
-    Jpeg::WriteFrameHeader(s, std::uint16_t(w), std::uint16_t(h));
+    Jpeg::WriteJFIFHeader(s);
     Jpeg::WriteQuantizationTable(s, Jpeg::GetLuminanceQuantizationMatrix(), Jpeg::QUANT_LUMINANCE);
     Jpeg::WriteQuantizationTable(s, Jpeg::GetChrominanceQuantizationMatrix(), Jpeg::QUANT_CHROMINANCE);
+    Jpeg::WriteFrameHeader(s, std::uint16_t(w), std::uint16_t(h));
     Jpeg::WriteHuffmanTable(s, encoder.GetLuminanceDCTable(), Jpeg::DC_TABLE, 0);
     Jpeg::WriteHuffmanTable(s, encoder.GetLuminanceACTable(), Jpeg::AC_TABLE, 0);
     Jpeg::WriteHuffmanTable(s, encoder.GetChrominanceDCTable(), Jpeg::DC_TABLE, 1);

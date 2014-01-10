@@ -43,6 +43,38 @@ void WriteStartOfImage(std::ostream& Stream)
     WriteMarker(0xD8, Stream);
 }
 
+void WriteJFIFHeader(std::ostream& Stream)
+{
+    WriteMarker(0xE0, Stream);
+
+    // JFIF header size
+    Write(Stream, ByteSwap(0x10));
+
+    // JFIF identifier
+    Write(Stream, std::uint8_t('J'));
+    Write(Stream, std::uint8_t('F'));
+    Write(Stream, std::uint8_t('I'));
+    Write(Stream, std::uint8_t('F'));
+    Write(Stream, std::uint8_t(0));
+
+    // JFIF major version
+    Write(Stream, std::uint8_t(1));
+
+    // JFIF minor version
+    Write(Stream, std::uint8_t(1));
+
+    // X/Y density units (1 = dots per inch)
+    Write(Stream, std::uint8_t(1));
+
+    // X/Y density
+    Write(Stream, ByteSwap(96));
+    Write(Stream, ByteSwap(96));
+
+    // Thumbnail size
+    Write(Stream, std::uint8_t(0));
+    Write(Stream, std::uint8_t(0));
+}
+
 void WriteEndOfImage(std::ostream& Stream)
 {
     WriteMarker(0xD9, Stream);
@@ -59,7 +91,7 @@ void WriteHuffmanTable(std::ostream& Stream, const HuffmanTable& Table, TableCla
 
     // Write the size of the table segment.
     // The total size of the segment is the number of codes (one byte each) + the rest of the header.
-    Write(Stream, ByteSwap(codeCount + 17));
+    Write(Stream, ByteSwap(codeCount + 19));
 
     // The table class and destination index are encoded as 4 bits each, so they need
     // to be encoded in the same byte. 
