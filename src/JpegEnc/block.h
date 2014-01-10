@@ -1,8 +1,8 @@
 #pragma once
 
 #include <array>
-#include <vector>
 #include <cstdint>
+#include <vector>
 
 /**
 A 8x8 block of 8-bit unsigned integers.

@@ -2,7 +2,6 @@
 #include "bmp.h"
 
 #include <fstream>
-#include <cstring>
 
 namespace
 {

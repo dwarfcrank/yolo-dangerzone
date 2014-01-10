@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "bitvector.h"
 
-#include <vector>
-#include <cstdint>
-
 #include <boost/test/unit_test.hpp>
+
+#include <cstdint>
+#include <vector>
 
 static void Check(const Util::BitVector& BitVector, const std::uint8_t* Expected, std::size_t NumExpected)
 {

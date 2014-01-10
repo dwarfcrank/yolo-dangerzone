@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "bmp.h"
 
-#include <vector>
-#include <cstdint>
-
 #include <boost/test/unit_test.hpp>
+
+#include <cstdint>
+#include <vector>
 
 // Normal 24bpp 3x3 pixel BMP image.
 static const char* TEST_3X3_24BPP_NAME = "test_3x3_24bpp.bmp";

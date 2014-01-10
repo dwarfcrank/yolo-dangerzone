@@ -1,7 +1,7 @@
 #pragma once
 
-#include "huffman.h"
 #include "block.h"
+#include "huffman.h"
 
 #include <iostream>
 

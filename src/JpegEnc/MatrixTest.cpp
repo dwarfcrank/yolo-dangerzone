@@ -2,10 +2,10 @@
 #include "block.h"
 #include "matrix.h"
 
-#include <vector>
-#include <cstdint>
-
 #include <boost/test/unit_test.hpp>
+
+#include <cstdint>
+#include <vector>
 
 static const Int16Block TEST_MATRIX_A =
 {

@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "block.h"
 
-#include <vector>
-#include <cstdint>
-
 #include <boost/test/unit_test.hpp>
+
+#include <cstdint>
+#include <vector>
 
 // A 1x1 block. This should result in one 8x8 block, with the first row
 // and column repeated with this byte.

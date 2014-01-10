@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "jpegfile.h"
-#include "huffman.h"
 #include "bitvector.h"
+#include "huffman.h"
+#include "jpegfile.h"
 #include "quantization.h"
 
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
 template<typename TValue>
 void Write(std::ostream& Stream, const TValue& Value)

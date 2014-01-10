@@ -1,11 +1,10 @@
 #include "stdafx.h"
-
-#include <vector>
-#include <cstdint>
-
 #include "colorutil.h"
 
 #include <boost/test/unit_test.hpp>
+
+#include <cstdint>
+#include <vector>
 
 // Base pixel data, 24-bpp RGB.
 static const std::uint8_t TEST_PIXEL_DATA[] =
