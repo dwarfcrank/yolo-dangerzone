@@ -7,14 +7,14 @@ SOURCES=\
 		src/stdafx.cpp\
 		src/jpeg/fdct.cpp\
 		src/jpeg/huffman.cpp\
+		src/jpeg/hufftable.cpp\
 		src/jpeg/jpegfile.cpp\
 		src/jpeg/quantization.cpp\
 		src/util/bitvector.cpp\
 		src/util/blocksplitter.cpp\
 		src/util/colorutil.cpp\
 		src/util/block.cpp\
-		src/util/bmp.cpp\
-		src/util/hufftable.cpp
+		src/util/bmp.cpp
 
 MAIN=src/main.cpp
 

@@ -212,7 +212,7 @@
     <ClCompile Include="src\util\bitvector.cpp" />
     <ClCompile Include="src\util\bmp.cpp" />
     <ClCompile Include="src\util\colorutil.cpp" />
-    <ClCompile Include="src\util\hufftable.cpp" />
+    <ClCompile Include="src\jpeg\hufftable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
