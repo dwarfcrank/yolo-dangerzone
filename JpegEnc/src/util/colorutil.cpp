@@ -23,17 +23,4 @@ void ConvertRGBToYCbCr(std::vector<std::uint8_t>* Pixels)
     }
 }
 
-void SplitChannels(const std::vector<std::uint8_t>& Pixels, std::vector<std::uint8_t>* Channel1,
-                   std::vector<std::uint8_t>* Channel2, std::vector<std::uint8_t>* Channel3)
-{
-    assert(Pixels.size() % 3 == 0);
-
-    auto end = Pixels.cend();
-    for (auto it = Pixels.cbegin(); it != end;) {
-        Channel1->push_back(*it++);
-        Channel2->push_back(*it++);
-        Channel3->push_back(*it++);
-    }
-}
-
 }

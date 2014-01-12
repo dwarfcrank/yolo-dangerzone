@@ -13,13 +13,14 @@
 #include "util/colorutil.h"
 #include "jpeg/jpegfile.h"
 #include "jpeg/quantization.h"
+#include "util/blocksplitter.h"
 #include <cstdio>
 
 int main(int argc, char* argv[])
 {
     if (argc != 4) {
         std::cout << "usage: " << argv[0] << " infile outfile quality" << std::endl;
-        std::cout << "quality is in range 1-100" << std::endl;
+        std::cout << "quality is in range 1-95" << std::endl;
 
         return 0;
     }
@@ -32,19 +33,20 @@ int main(int argc, char* argv[])
     std::vector<std::uint8_t> pixels, y, cb, cr;
     std::uint32_t w, h;
     BMP::LoadBitmap(argv[1], &pixels, &w, &h);
-
     Util::ConvertRGBToYCbCr(&pixels);
 
-    Util::SplitChannels(pixels, &y, &cb, &cr);
+    Util::BlockSplitter splitter(pixels, w, h);
     
-    std::vector<Uint8Block> yBlocks;
-    std::vector<Uint8Block> cbBlocks;
-    std::vector<Uint8Block> crBlocks;
-
     int quality = 50;
     std::istringstream is(argv[3]);
     
     is >> quality;
+
+    if (quality <= 0 || quality > 95) {
+        std::cout << "quality must be in range  1-95" << std::endl;
+
+        return 0;
+    }
 
     Jpeg::WriteStartOfImage(s);
     Jpeg::WriteJFIFHeader(s);
@@ -56,24 +58,25 @@ int main(int argc, char* argv[])
     Jpeg::WriteHuffmanTable(s, encoder.GetChrominanceDCTable(), Jpeg::DC_TABLE, 1);
     Jpeg::WriteHuffmanTable(s, encoder.GetChrominanceACTable(), Jpeg::AC_TABLE, 1);
 
-    Util::SplitBlocks(y, w, h, &yBlocks);
-    Util::SplitBlocks(cb, w, h, &cbBlocks);
-    Util::SplitBlocks(cr, w, h, &crBlocks);
+    auto blockCount = splitter.GetNumBlocks();
 
-    for (int i = 0; i < yBlocks.size(); i++) {
-        Int16Block result, result2;
-
-        Jpeg::ComputeBlockDCT(yBlocks[i], &result);
+    Int16Block result, result2;
+    Uint8Block block;
+    for (std::size_t i = 0; i < blockCount; i++) {
+        splitter.ExtractBlock(i, Jpeg::COMPONENT_Y, &block);
+        Jpeg::ComputeBlockDCT(block, &result);
         Jpeg::QuantizeLuminanceBlock(quality, &result);  
         Jpeg::ReorderBlock(result, &result2);
         encoder.EncodeBlock(result2, Jpeg::COMPONENT_Y, &bits);
 
-        Jpeg::ComputeBlockDCT(cbBlocks[i], &result);
+        splitter.ExtractBlock(i, Jpeg::COMPONENT_CB, &block);
+        Jpeg::ComputeBlockDCT(block, &result);
         Jpeg::QuantizeChrominanceBlock(quality, &result);  
         Jpeg::ReorderBlock(result, &result2);
         encoder.EncodeBlock(result2, Jpeg::COMPONENT_CB, &bits);
 
-        Jpeg::ComputeBlockDCT(crBlocks[i], &result);
+        splitter.ExtractBlock(i, Jpeg::COMPONENT_CR, &block);
+        Jpeg::ComputeBlockDCT(block, &result);
         Jpeg::QuantizeChrominanceBlock(quality, &result);  
         Jpeg::ReorderBlock(result, &result2);
         encoder.EncodeBlock(result2, Jpeg::COMPONENT_CR, &bits);

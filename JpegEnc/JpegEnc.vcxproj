@@ -167,6 +167,7 @@
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\util\bitvector.h" />
     <ClInclude Include="include\util\block.h" />
+    <ClInclude Include="include\util\blocksplitter.h" />
     <ClInclude Include="include\util\bmp.h" />
     <ClInclude Include="include\util\colorutil.h" />
     <ClInclude Include="include\util\matrix.h" />
@@ -186,26 +187,29 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\util\block.cpp" />
+    <ClCompile Include="src\util\blocksplitter.cpp" />
     <ClCompile Include="test\TestMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="test\util\BitVectorTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="test\util\BlockTest.cpp">
+    <ClCompile Include="test\util\BlockSplitterTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="test\util\BmpTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="test\util\ColorUtilTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="test\util\MatrixTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\util\bitvector.cpp" />
-    <ClCompile Include="src\util\block.cpp" />
     <ClCompile Include="src\util\bmp.cpp" />
     <ClCompile Include="src\util\colorutil.cpp" />
     <ClCompile Include="src\util\hufftable.cpp" />

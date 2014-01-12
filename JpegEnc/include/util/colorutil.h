@@ -16,15 +16,4 @@ used for pixel conversion is taken from http://en.wikipedia.org/wiki/YCbCr#JPEG_
 */
 void ConvertRGBToYCbCr(std::vector<std::uint8_t>* Pixels);
 
-/**
-Splits packed 24bpp pixels into three separate arrays, each containing only a single channel.
-
-@param[in] Pixels       The original pixel data in unspecified color space.
-@param[out] Channel1    The resulting data for the first channel.
-@param[out] Channel2    The resulting data for the second channel.
-@param[out] Channel3    The resulting data for the third channel.
-*/
-void SplitChannels(const std::vector<std::uint8_t>& Pixels, std::vector<std::uint8_t>* Channel1,
-                   std::vector<std::uint8_t>* Channel2, std::vector<std::uint8_t>* Channel3);
-
 }

@@ -49,15 +49,12 @@
     <ClInclude Include="include\util\matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\util\blocksplitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test\util\BitVectorTest.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="test\util\BlockTest.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="test\util\ColorUtilTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test\util\MatrixTest.cpp">
@@ -87,9 +84,6 @@
     <ClCompile Include="src\util\bitvector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\block.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\util\bmp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,6 +95,15 @@
     </ClCompile>
     <ClCompile Include="test\util\BmpTest.cpp">
       <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\blocksplitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\util\BlockSplitterTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\block.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
