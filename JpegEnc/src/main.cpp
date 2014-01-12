@@ -32,7 +32,12 @@ int main(int argc, char* argv[])
 
     std::vector<std::uint8_t> pixels, y, cb, cr;
     std::uint32_t w, h;
-    BMP::LoadBitmap(argv[1], &pixels, &w, &h);
+    if (BMP::LoadBitmap(argv[1], &pixels, &w, &h) != BMP::LOAD_SUCCESS) {
+        std::cout << "invalid bitmap" << std::endl;
+
+        return 0;
+    }
+
     Util::ConvertRGBToYCbCr(&pixels);
 
     Util::BlockSplitter splitter(pixels, w, h);
