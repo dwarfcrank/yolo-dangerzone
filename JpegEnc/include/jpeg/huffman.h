@@ -46,8 +46,8 @@ struct HuffmanTable
 enum ImageComponent
 {
     COMPONENT_Y = 0,
-    COMPONENT_CR,
     COMPONENT_CB,
+    COMPONENT_CR,
     NUM_COMPONENTS,
 };
 
