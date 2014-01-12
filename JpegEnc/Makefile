@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -std=c++0x
+CFLAGS=-c -std=c++0x -O3
 LDFLAGS=
 LIBS=-lstdc++
 DIRS=-I./include
