@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "util/bmp.h"
 
+#include <cstring>
 #include <fstream>
 
 namespace
