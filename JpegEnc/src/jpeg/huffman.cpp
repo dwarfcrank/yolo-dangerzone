@@ -92,12 +92,15 @@ void HuffmanEncoder::EncodeDCCoefficient(const Int16Block& Block, const HuffmanT
 void HuffmanEncoder::EncodeACCoefficients(const Int16Block& Block, const HuffmanTable& ACTable,
                                           Util::BitVector* Result)
 {
+    bool eobWritten = false;
+
     for (std::size_t i = 1; i < 64; i++) {
         std::size_t zeroCount = GetConsecutiveZeroCount(Block, i);
 
         if (zeroCount == 64 - i) {
             const HuffmanCode& endOfBlock = ACTable.Codes[0];
             Result->WriteBits(endOfBlock.Code, endOfBlock.Length);
+            eobWritten = true;
 
             break;
         } else if (zeroCount >= 16) {
@@ -126,6 +129,11 @@ void HuffmanEncoder::EncodeACCoefficients(const Int16Block& Block, const Huffman
         }
 
         Result->WriteBits(value, length);
+    }
+
+    if (!eobWritten) {
+        const HuffmanCode& endOfBlock = ACTable.Codes[0];
+        Result->WriteBits(endOfBlock.Code, endOfBlock.Length);
     }
 }
 
