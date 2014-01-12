@@ -3,6 +3,7 @@
 #include "jpeg/huffman.h"
 
 #include <cmath>
+#include <cstdlib>
 
 static std::uint16_t GetLength(std::int32_t Value)
 {
