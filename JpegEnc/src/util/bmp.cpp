@@ -115,33 +115,6 @@ static BitmapLoadStatus LoadAndValidateHeaders(std::ifstream& FileStream, Bitmap
 }
 
 /**
-Reads the pixel rows from the bitmap file.
-
-@param[in] FileStream   The input file stream.
-@param[out] DestBuffer  The buffer to write the pixels to.
-@param[in] FileHeader   The bitmap file header.
-@param[in] InfoHeader   The bitmap info header.
-
-@return One of #BitmapLoadStatus codes.
-*/
-static BitmapLoadStatus LoadPixels(std::ifstream& FileStream, std::vector<std::uint8_t>* DestBuffer,
-                                   const BitmapFileHeader& FileHeader, const BitmapInfoHeader& InfoHeader)
-{
-    FileStream.seekg(FileHeader.PixelArrayOffset);
-
-    DestBuffer->resize(InfoHeader.PixelDataSize);
-    auto buffer = reinterpret_cast<char*>(&DestBuffer->at(0));
-
-    FileStream.read(buffer, InfoHeader.PixelDataSize);
-
-    if (FileStream.gcount() != InfoHeader.PixelDataSize) {
-        return UNEXPECTED_END_OF_FILE;
-    }
-
-    return LOAD_SUCCESS;
-}
-
-/**
 Calculates the byte length of a single row.
 
 The BMP format requires the length of each row to be a multiple of 4.
@@ -159,6 +132,39 @@ static std::uint32_t CalculateStride(const BitmapInfoHeader& InfoHeader)
     }
 
     return result;
+}
+
+/**
+Reads the pixel rows from the bitmap file.
+
+@param[in] FileStream   The input file stream.
+@param[out] DestBuffer  The buffer to write the pixels to.
+@param[in] FileHeader   The bitmap file header.
+@param[in] InfoHeader   The bitmap info header.
+
+@return One of #BitmapLoadStatus codes.
+*/
+static BitmapLoadStatus LoadPixels(std::ifstream& FileStream, std::vector<std::uint8_t>* DestBuffer,
+                                   const BitmapFileHeader& FileHeader, const BitmapInfoHeader& InfoHeader)
+{
+    FileStream.seekg(FileHeader.PixelArrayOffset);
+
+    // Workaround for Paint.NET being stupid and generating broken images...
+    if (InfoHeader.PixelDataSize != 0) {
+        DestBuffer->resize(InfoHeader.PixelDataSize);
+    } else {
+        DestBuffer->resize(CalculateStride(InfoHeader) * InfoHeader.Height);
+    }
+
+    auto buffer = reinterpret_cast<char*>(&DestBuffer->at(0));
+
+    FileStream.read(buffer, InfoHeader.PixelDataSize);
+
+    if (FileStream.gcount() != InfoHeader.PixelDataSize) {
+        return UNEXPECTED_END_OF_FILE;
+    }
+
+    return LOAD_SUCCESS;
 }
 
 /**
